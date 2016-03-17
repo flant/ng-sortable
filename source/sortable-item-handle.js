@@ -71,6 +71,7 @@
             dragHandled, //drag handled.
             createPlaceholder,//create place holder.
             isPlaceHolderPresent,//is placeholder present.
+            isDisabledExpression,
             isDisabled = false, // drag enabled
             escapeListen, // escape listen event
             isLongTouch = false; //long touch disabled.
@@ -85,8 +86,12 @@
           scope.itemScope = itemController.scope;
           element.data('_scope', scope); // #144, work with angular debugInfoEnabled(false)
 
-          scope.$watch('[sortableScope.isDisabled, sortableScope.options.longTouch]',
-              function (newValues) {
+          isDisabledExpression = '[sortableScope.isDisabled, sortableScope.options.longTouch]';
+          if (angular.isDefined(attrs.isDisabled)) {
+            isDisabledExpression = isDisabledExpression.replace('sortableScope.isDisabled', 'sortableScope.isDisabled || ('+attrs.isDisabled+')');
+          }
+
+          scope.$watch(isDisabledExpression, function (newValues) {
             if (isDisabled !== newValues[0]) {
               isDisabled = newValues[0];
               if (isDisabled) {
