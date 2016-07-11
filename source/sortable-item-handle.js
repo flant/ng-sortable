@@ -209,7 +209,7 @@
             // container positioning
             containerPositioning = scope.sortableScope.options.containerPositioning || 'absolute';
 
-            dragItemInfo = $helper.dragItem(scope);
+            dragItemInfo = $helper.dragItem(scope.itemScope);
             tagName = scope.itemScope.element.prop('tagName');
 
             dragElement = angular.element($document[0].createElement(scope.sortableScope.element.prop('tagName')))
@@ -349,8 +349,8 @@
               targetY = eventObj.pageY - ($window.pageYOffset || $document[0].documentElement.scrollTop);
 
               //IE fixes: hide show element, call element from point twice to return pick correct element.
-              targetElement = angular.element($document[0].elementFromPoint(targetX, targetY));
               dragElement.addClass(sortableConfig.hiddenClass);
+              targetElement = angular.element($document[0].elementFromPoint(targetX, targetY));
               dragElement.removeClass(sortableConfig.hiddenClass);
 
               $helper.movePosition(eventObj, dragElement, itemPosition, containment, containerPositioning, scrollableContainer);
@@ -544,9 +544,8 @@
               } else {
                 element.bind('touchstart', dragListen);
               }
-            } else {
-              element.bind('mousedown', dragListen);
             }
+            element.bind('mousedown', dragListen);
           };
 
           /**

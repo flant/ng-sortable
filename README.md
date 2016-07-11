@@ -4,13 +4,9 @@ ng-sortable
 
 Angular Library for Drag and Drop, supports Sortable and Draggable. No JQuery UI used. Supports Touch devices.
 
-If you use this module you can give it a thumbs up at [http://ngmodules.org/modules/ng-sortable](http://ngmodules.org/modules/ng-sortable).
-
 #### Release:
 
-Latest release version 1.3.3 
-[Module name is modified from 'ui.sortable' to 'as.sortable' from versions 1.3.x,
-considering the conflict with the sortable module from bootstrap-ui.]
+Latest release version 1.3.6
 
 #### Demo Page:
 
@@ -188,7 +184,7 @@ Define your callbacks in the invoking controller.
             allowDuplicates: true //optional param allows duplicates to be dropped.
     };
     
-That's what all you have to do.
+That's all you have to do.
 
 ##### Restrict Moving between Columns:
 
@@ -228,7 +224,7 @@ The move failure Impl here just reverts the moved item to its original location.
            */
           moveFailure = function() {   
                eventObj.dest.sortableScope.removeItem(eventObj.dest.index);
-               eventObj.source.itemScope.sortableScope.insertItem(eventObj.source.index, eventObj.source.itemScope.task);
+               eventObj.source.itemScope.sortableScope.insertItem(eventObj.source.index, eventObj.source.itemScope.item);
           };
     }
 
@@ -237,7 +233,7 @@ The move failure Impl here just reverts the moved item to its original location.
 
 Horizontal Drag and Drop can be achieved using the same Library. The Column display can be tweaked to have horizontal items and the same can be achieved via some CSS tweaks (like making the column display style to "inline-block"). Added a sample in the demo source (refer plunker.css/js/html).
 
-Plunkr example link: http://plnkr.co/edit/OcaMzBV3c0K3CL1nw9L4?p=preview
+Plunkr example link: http://a5hik.github.io/ng-sortable/#/horizontal
 
 ##### Scroll page after reaching end of visible area.
 
@@ -276,7 +272,7 @@ Run the following commands from the project root directory.
 
 ##### Commands to run:
     $ grunt build - builds the source and generates the min files in dist.
-    $ grunt server - runs a local web server on node.js
+    $ grunt serve - runs a local web server on node.js
     $ grunt test - runs the tests (WIP).
     $ grunt test:continuous - end to end test (WIP).
 
@@ -287,8 +283,6 @@ To access the local server, enter the following URL into your web browser:
 ##### NG Modules Link:
 
 If you use this module you can give it a thumbs up at [http://ngmodules.org/modules/ng-sortable](http://ngmodules.org/modules/ng-sortable).
-
-Let [me](https://github.com/a5hik) know if you have any questions.
 
 For Bug report, and feature request File an Issue here: [issue](https://github.com/a5hik/ng-sortable/issues).
 
