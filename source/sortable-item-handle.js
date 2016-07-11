@@ -490,7 +490,7 @@
               dragItemInfo.apply();
               scope.sortableScope.$apply(function () {
                 if (dragItemInfo.isSameParent()) {
-                  if (dragItemInfo.isOrderChanged()) {
+                  if (dragItemInfo.isOrderChanged() || scope.itemScope.sortableScope.cloning) {
                     scope.callbacks.orderChanged(dragItemInfo.eventArgs());
                   }
                 } else {
